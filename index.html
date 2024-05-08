@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adriana y Patricia Jaramillo</title>
+        <meta name="description" content="Celebramos la vida de Adriana y Patricia Jaramillo">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.webp">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/824efb27a7.js" crossorigin="anonymous"></script>
+        <script src="js/app.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <nav class="nav-header">
+                <!-- <div class="nav-header-icon">
+                    <i class="fa-solid fa-bars"></i>
+                </div> -->
+                <ul class="nav-header-menu" id="menu">
+                    <a href="#main"><li>Inicio</li></a>
+                    <a href="#video-section"><li>Dejanos tu Video</li></a>
+                    <a href="#note-section"><li>Dejanos tu Nota</li></a>
+                </ul>
+                <picture>
+                    <i class="fa-solid fa-bars" id="menuicon" onclick="showMenu ()"></i>
+                    <a href="#main"><img src="img/logo.webp" alt="logo" class="nav-header-logo"></a>
+                </picture>
+            </nav>
+        </header>
+        <main>
+
+            <section class="landing" id="main">
+
+                <video autoplay loop muted plays-inline class="landing-video" id="landingVideo">
+                    <source src="img/video/bosque.mp4">
+                </video>
+
+            </section>
+            <section class="options">
+
+                <div class="options-item">
+                    <a href="#video-section"><h2>Dejanos tu Video</h2></a>
+                </div>
+                <div class="options-item">
+                    <a href="#note-section"><h2>Dejanos tu Nota</h2></a>
+                </div>
+
+            </section>
+            <section class="video" id="video-section">
+                <h1 data-aos="fade-right">Dejanos tu Video</h1>
+                <p data-aos="fade-right">Esperamos contar con tu video,  donde expreses unas breves palabras,  que 
+                    <br>usaremos en video recopilatorio y que podremos ver el día del evento. 
+                    <br>Ten presente las siguientes recomendaciones:</p>
+                    <br>
+               
+                    <li data-aos="fade-right">Graba el video en Horizontal con una calidad de 4k a 30fps.</li>
+                    <br>
+                    <li data-aos="fade-right">Procura que la duración del video no sea mayor a 60 segundos.</li>
+                    <br>
+                    <li data-aos="fade-right">Ubica un lugar con buena iluminación y buena acústica, evitando sonidos de fondo.</li>
+                    <br>
+                    <li data-aos="fade-right">Evita agregar música al video, deseamos escuchar solo sus voces.</li>
+                    <br>
+                    
+                    <p data-aos="fade-right">Al finalizar, carga tu video en el siguiente enlace,  donde ubicaras tu carpeta para subirlo.</p>
+                    <br>
+                    <br>
+
+                    <h2>Carga tu video</h2>
+
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                        <p>
+                            Elige tu Video
+                            <input type="file" name="archivos"/>
+                        </p>
+
+                        <p>
+                            <button type="submit">Enviar</button>
+                        </p>
+                    </form>
+
+                    <picture data-aos="fade-down-left" class="video-img">
+                        <img src="img/video-flower.webp" alt="video-flower">
+                    </picture>
+
+            </section>
+            <section class="note" id="note-section">
+                <h2 data-aos="fade-right">Dejanos tu Nota</h2>
+
+                <p data-aos="fade-right">Creemos fervientemente en el poder de las letras, como medio para expresar los <br> 
+                    grandes deseos de nuestros corazones, por eso te pedimos dejar una nota, la cual <br>
+                     leeremos y atesoraremos.</p>
+                     <br>
+                <p data-aos="fade-right">Nota:</p>
+                <form data-aos="fade-right" action="note" class="form-note">
+                    <textarea name="Deja-tu-nota" id="" cols="90" rows="15"></textarea>
+                    <br><br><br>
+                    <button class="button-note" type="submit">Guardar</button>
+                </form>
+                
+
+                <picture data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" class="note-img">
+                    <img src="img/note-flowers.webp" alt="note-flowers">
+                </picture>
+
+            </section>
+
+        </main>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+
+</html>

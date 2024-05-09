@@ -1,5 +1,5 @@
 window.addEventListener("scroll",function(){
-    var header = document.querySelector("header");
+    var header = document.getElementById("header");
     header.classList.toggle ("new-head",window.scrollY>0);
 });
 

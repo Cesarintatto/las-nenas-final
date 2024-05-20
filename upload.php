@@ -35,7 +35,9 @@ try{
         )
     );
 
-    echo '<a href=https://drive.google.com/open?id=' .$resultado->id . '" target="blank">'.$resultado->name.'</a>';
+    echo '<script>
+        alert ("Se ha cargado exitosamente")
+    </script>';
 
 }catch(Google_Service_Exception $gs){
     $mensaje = json_decode($gs->getMessage());
@@ -44,3 +46,23 @@ try{
 }catch(Exception $e){
     echo $e->getMessage();
 }
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adriana y Patricia Jaramillo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <meta name="description" content="Celebramos la vida de Adriana y Patricia Jaramillo">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.webp">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/824efb27a7.js" crossorigin="anonymous"></script>
+        <script src="js/app.js" defer></script>
+    </head>
+    <body>
+        <a href="index.html#note-section" class="back-message"><div>Dejanos tu nota</div></a>
+    </body>
+
+</html>

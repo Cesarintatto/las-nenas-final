@@ -13,6 +13,9 @@
         <script src="js/app.js" defer></script>
     </head>
     <body>
+        <div class="loader" id="load">
+            <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
         <header>
             <nav class="nav-header" id="header">
                 <!-- <div class="nav-header-icon">
@@ -34,7 +37,7 @@
             <section class="landing" id="main">
 
                 <video autoplay loop muted controls plays-inline class="landing-video" id="landingVideo">
-                    <source src="img/video/back-nenascomp.mp4">
+                    <source loading="lazy" src="img/video/back-nenascomp.mp4">
                 </video>
 
             </section>
@@ -49,6 +52,9 @@
 
             </section>
             <section class="video" id="video-section">
+                <div class="loader2" id="load2">
+                    <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
                 <h1 data-aos="fade-right">Dejanos tu Video</h1>
                 <p data-aos="fade-right">Esperamos contar con tu video,  donde expreses unas breves palabras,  que 
                     <br>usaremos en video recopilatorio y que podremos ver el día del evento. 
@@ -73,16 +79,20 @@
                     <form action="upload.php" method="POST" enctype="multipart/form-data" class="form-video">
                         <p class="form-video-input--cont">
                             <label for="#archivos">Elige tu Video</label>
-                            <input type="file" name="archivos" id="archivos"/>
+                            <input type="file" name="archivos" id="archivos" required/>
                         </p>
                         <br><br>
                         <p>
-                            <button type="submit" class="btn-enviar">Enviar</button>
+                            <button type="submit" class="btn-enviar" id="btn-enviar">Enviar</button>
                         </p>
                     </form>
 
+                    <div id="divCarga" style="display: none;">
+                        <p>Cargando!!</p>
+                    </div>
+
                     <picture data-aos="fade-down-left" class="video-img">
-                        <img src="img/video-flower.webp" alt="video-flower">
+                        <img loading="lazy" src="img/video-flower.webp" alt="video-flower">
                     </picture>
 
             </section>
@@ -94,18 +104,23 @@
                      leeremos y atesoraremos.</p>
                      <br>
                 <p data-aos="fade-right">Nota:</p>
-                <form data-aos="fade-right" action="note" class="form-note">
-                    <textarea name="Deja-tu-nota" id="" cols="90" rows="15"></textarea>
+                <form data-aos="fade-right" action="mail.php" class="form-note" method="POST">
+                    
+                    <textarea id="" cols="90" rows="15" name="mensaje"></textarea>
                     <br><br><br>
-                    <button class="button-note" type="submit">Guardar</button>
+                    <label for="nombre">Cordialmente</label><br><br>
+                    <input type="text" placeholder="Cordialmente" name="nombre" id="nombre" class="input-note">
+                    <br><br><br>
+                    <input class="button-note" type="submit" name="enviar">
                 </form>
                 
 
                 <picture data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" class="note-img">
-                    <img src="img/note-flowers.webp" alt="note-flowers">
+                    <img loading="lazy" src="img/note-flowers.webp" alt="note-flowers">
                 </picture>
 
             </section>
+
 
         </main>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

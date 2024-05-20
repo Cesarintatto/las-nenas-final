@@ -8,35 +8,18 @@
     $mensaje= $_POST['mensaje'];
     $to = 'adpajaramillo@gmail.com';
 
-    $headers = 'From: tu_correo@gmail.com' . "\r\n" .
-           'Reply-To: tu_correo@gmail.com' . "\r\n" .
-           'X-Mailer: PHP/' . phpversion();
-    
-    
-   /*  if  (mail($to, $nombre, $mensaje, $headers)) {
-        echo 'El correo se envió correctamente.';
-    }else {
-        echo 'Hubo un error al enviar el correo.';
-    } */
-
     // Importa la librería PHPMailer
     require 'vendor/autoload.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
-
-    
-/*     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $nombre = $_POST["nombre"];
-      $mensaje = $_POST["mensaje"]; */
       
       // Crea una instancia de PHPMailer
       $mail = new PHPMailer(true);
       
       try {
         // Configura el servidor SMTP de Gmail
-        $mail->SMTPDebug = 2;
         $mail->isSMTP();
         $mail->Host = 'smtp.mailersend.net';
         $mail->SMTPAuth = true;
@@ -46,7 +29,7 @@
         $mail->Port = 587;
         
         // Configura el remitente y el destinatario
-        $mail->setFrom('MS_7rHwlo@trial-v69oxl5o1kdg785k.mlsender.net');
+        $mail->setFrom('MS_7rHwlo@trial-v69oxl5o1kdg785k.mlsender.net', $nombre);
         $mail->addAddress('adpajaramillo@gmail.com', 'AdPajaramillo');
         
         // Configura el contenido del correo
@@ -56,7 +39,9 @@
         // Envía el correo
         $mail->send();
         
-        echo 'El mensaje ha sido enviado correctamente.';
+        echo '<script>
+        alert ("Su nota se ha enviado correctamente")
+    </script>';
       } catch (Exception $e) {
         echo 'Ha ocurrido un error al enviar el mensaje: ' . $mail->ErrorInfo;
       }

@@ -1,20 +1,66 @@
 <?php
 
-    //Tomando la información del POST
+    ini_set('SMTP', 'smtp.gmail.com');
+    ini_set('smtp_port', 587);
+    ini_set('sendmail_from', 'tattosmart@gmail.com');
 
-    $nombre= $_POST['nombre'];
+    $nombre=$_POST['nombre'];
     $mensaje= $_POST['mensaje'];
+    $to = 'adpajaramillo@gmail.com';
 
-    $destinatario = "adpajaramillo@gmail.com";
-    $asunto = "Nota nueva - Las Nenas 81" . $nombre;
-    $cuerpo = $mensaje;
+    $headers = 'From: tu_correo@gmail.com' . "\r\n" .
+           'Reply-To: tu_correo@gmail.com' . "\r\n" .
+           'X-Mailer: PHP/' . phpversion();
+    
+    
+   /*  if  (mail($to, $nombre, $mensaje, $headers)) {
+        echo 'El correo se envió correctamente.';
+    }else {
+        echo 'Hubo un error al enviar el correo.';
+    } */
 
-    //Configuracion headers
+    // Importa la librería PHPMailer
+    require 'vendor/autoload.php';
 
-    $headers = "From: noreply@lasnenas.com";
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
 
-    //mail($destinatario,$asunto,$cuerpo,$headers);
-
+    
+/*     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $nombre = $_POST["nombre"];
+      $mensaje = $_POST["mensaje"]; */
+      
+      // Crea una instancia de PHPMailer
+      $mail = new PHPMailer(true);
+      
+      try {
+        // Configura el servidor SMTP de Gmail
+        $mail->SMTPDebug = 2;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailersend.net';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'MS_7rHwlo@trial-v69oxl5o1kdg785k.mlsender.net';
+        $mail->Password = 'Vs6UHCkXgD38Ifa3';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+        
+        // Configura el remitente y el destinatario
+        $mail->setFrom('MS_7rHwlo@trial-v69oxl5o1kdg785k.mlsender.net');
+        $mail->addAddress('adpajaramillo@gmail.com', 'AdPajaramillo');
+        
+        // Configura el contenido del correo
+        $mail->Subject = 'Nuevo mensaje desde el formulario';
+        $mail->Body = "Nombre: $nombre\n\nMensaje: $mensaje";
+        
+        // Envía el correo
+        $mail->send();
+        
+        echo 'El mensaje ha sido enviado correctamente.';
+      } catch (Exception $e) {
+        echo 'Ha ocurrido un error al enviar el mensaje: ' . $mail->ErrorInfo;
+      }
+/*     } */ 
     ?>
 
 <!DOCTYPE html>

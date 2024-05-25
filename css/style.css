@@ -355,6 +355,12 @@ textarea {
     }
 }
 
+@media screen and (max-width: 900px){
+    .options-item {
+        width: 25%;
+    }
+}
+
 @media screen and (max-width: 599px) {
     .nav-header-logo {
         height: 100px;
